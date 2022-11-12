@@ -82,11 +82,17 @@ kalloc(void)
 }
 int kfreemem(void){
     struct run *tmp;
-    int number_of_free_page =0;
+    acquire(&kmem.lock);
+    int number_of_free_pages =0;
     for(tmp = kmem.freelist;tmp!= 0;tmp=tmp->next){
-        number_of_free_page++;
+        number_of_free_pages++;
     }
-    return number_of_free_page;
 
+
+
+
+    release(&kmem.lock);
+
+    return number_of_free_pages;
 
 }

@@ -230,4 +230,4 @@ add_executable(xv6_riscv
         fs.img
         LICENSE
         Makefile
-        README)
+        README user/kfreemem.c)
